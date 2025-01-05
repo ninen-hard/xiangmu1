@@ -1,0 +1,238 @@
+/* 全局样式 */
+:root {
+  --primary-color: #007bff;
+  --secondary-bg-color: #f4f6f9;
+  --text-color: #333;
+  --font-family: Arial, sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Connect Wallet 按钮放在右边 */
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.main-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px; /* 控制最大宽度 */
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+.left-content {
+  flex: 1;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 确保上下有空白 */
+  align-items: stretch;
+}
+
+.right-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 上下居中 */
+  align-items: center; /* 左右居中 */
+  position: relative;
+}
+
+.mint-nft-section,
+.list-nft-section,
+.on-sale-nfts-section {
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+
+button:hover:not(:disabled) {
+  background-color: darken(var(--primary-color), 10%);
+}
+
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.nft-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.nft-gallery__listBox {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  border: 2px solid #ddd;
+  flex: 1 1 calc(33.333% - 40px); /* 每行三张图片，留出间隙 */
+  min-width: 200px;
+}
+
+.nft-gallery__listBox:hover {
+  transform: translateY(-5px);
+}
+
+.nft-gallery__listImg img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 150px;
+}
+
+.nft-gallery__listTitle {
+  padding: 10px;
+  font-size: 1.1em;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.nft-gallery__listRemark {
+  padding: 0 10px 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.nft-gallery__listBtnBox {
+  padding: 10px;
+  text-align: right;
+}
+
+.nfts-for-sale-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.nft-for-sale-item {
+  margin-bottom: 20px;
+}
+
+button[disabled]::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  border: 2px solid #ddd;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 右边内容区的特殊样式 */
+.right-content img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 当屏幕尺寸较小时调整布局 */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .left-content, .right-content {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    flex: none;
+    width: 100%;
+  }
+
+  .right-content {
+    border-bottom: none;
+    border-top: 1px solid #ddd;
+  }
+
+  .nft-gallery__listBox {
+    flex: 1 1 calc(50% - 40px); /* 在小屏幕上每行两张图片 */
+  }
+}
+
+/* Connect Wallet 按钮样式 */
+.connect-wallet-button {
+  width: 200px; /* 减小宽度 */
+  font-size: 16px; /* 减小字体大小 */
+  padding: 8px 16px; /* 减少内边距 */
+}
